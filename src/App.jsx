@@ -13,24 +13,24 @@ const App = () => {
   }, []);
 
   const fetchTasks = async () => {
-    const response = await axios.get('http://localhost:5000/tasks');
+    const response = await axios.get('https://task-management-backend-jzuw.onrender.com/tasks');
     const sortedTasks = response.data.sort((a, b) => a.priority - b.priority);
     setTasks(sortedTasks);
   };
 
   const handleAddTask = async (taskData) => {
-    await axios.post('http://localhost:5000/tasks', taskData);
+    await axios.post('https://task-management-backend-jzuw.onrender.com/tasks', taskData);
     fetchTasks();
   };
 
   const handleEditTask = async (taskData) => {
-    await axios.put(`http://localhost:5000/tasks/${taskData._id}`, taskData);
+    await axios.put(`https://task-management-backend-jzuw.onrender.com/tasks/${taskData._id}`, taskData);
     fetchTasks();
     setEditingTask(null); // Exit edit mode
   };
 
   const handleDeleteTask = async (taskId) => {
-    await axios.delete(`http://localhost:5000/tasks/${taskId}`);
+    await axios.delete(`https://task-management-backend-jzuw.onrender.com/tasks/${taskId}`);
     fetchTasks();
   };
 
